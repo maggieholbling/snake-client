@@ -1,5 +1,6 @@
 // Stores the active TCP connection object.
 // let connection;
+const { ARROWS } = require('./constants');
 
 const setupInput = function(conn) {
   // connection = conn;
@@ -16,27 +17,10 @@ const handleUserInput = (stdin, conn) => {
     if (key === '\u0003') {
       process.exit();
     }
-    if (key === 'w' || key === '\u001b[A') {
-      conn.write('Move: up');
-    }
-    if (key === 'a' || key === '\u001b[D') {
-      conn.write('Move: left');
-    }
-    if (key === 's' || key === '\u001b[B') {
-      conn.write('Move: down');
-    }
-    if (key === 'd' || key === '\u001b[C') {
-      conn.write('Move: right');
-    }
-    if (key === 'x') {
-      conn.write('Say: Yo');
-    }
-    if (key === 'z') {
-      conn.write('Say: ¯\_(ツ)_/¯ ');
+    if (ARROWS[key]) {
+      conn.write(ARROWS[key]);
     }
   });
 }
-
- 
 
 module.exports = {setupInput};
