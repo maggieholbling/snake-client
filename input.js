@@ -1,8 +1,8 @@
 // Stores the active TCP connection object.
-let connection;
+// let connection;
 
 const setupInput = function(conn) {
-  connection = conn;
+  // connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -28,7 +28,15 @@ const handleUserInput = (stdin, conn) => {
     if (key === 'd' || key === '\u001b[C') {
       conn.write('Move: right');
     }
+    if (key === 'x') {
+      conn.write('Say: Yo');
+    }
+    if (key === 'z') {
+      conn.write('Say: ¯\_(ツ)_/¯ ');
+    }
   });
 }
+
+ 
 
 module.exports = {setupInput};
